@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime_Harsh_world | Official Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4757;
+            --accent: #2f3542;
+            --bg: #0a0a0c;
+            --glow: 0 0 20px rgba(255, 71, 87, 0.5);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(15px);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: white;
+            letter-spacing: -1px;
+            cursor: pointer;
+        }
+
+        .logo span { color: var(--primary); text-shadow: var(--glow); }
+
+        nav ul { display: flex; list-style: none; gap: 35px; }
+        nav ul li a {
+            text-decoration: none; color: white;
+            font-weight: 500; font-size: 13px;
+            text-transform: uppercase; transition: 0.3s;
+        }
+        nav ul li a:hover { color: var(--primary); }
+
+        /* --- Sections SPA Logic --- */
+        section { display: none; min-height: 100vh; padding-top: 100px; }
+        section.active { display: block; animation: pageFade 0.6s ease-out; }
+
+        @keyframes pageFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.4), var(--bg)), 
+                        url('https://images8.alphacoders.com/133/1331307.png') center/cover;
+            display: flex; align-items: center; padding: 0 8%;
+            position: relative;
+        }
+
+        .hero-content { max-width: 800px; }
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5rem; line-height: 1; margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Naam ka highlight */
+        .brand-name {
+            color: var(--primary);
+            text-shadow: var(--glow);
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem; color: #ccc; margin-bottom: 40px;
+            max-width: 550px; line-height: 1.6;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 15px 45px; border-radius: 5px; text-decoration: none;
+            font-weight: 700; text-transform: uppercase; transition: var(--transition);
+            display: inline-block; cursor: pointer; border: none;
+        }
+        .btn-primary { background: var(--primary); color: white; box-shadow: var(--glow); }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 71, 87, 0.6); }
+
+        /* --- ANIME GRID --- */
+        .content-container { padding: 80px 8%; }
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px; margin-top: 40px;
+        }
+
+        .card {
+            background: #111; border-radius: 15px; overflow: hidden;
+            transition: var(--transition); border: 1px solid rgba(255,255,255,0.05);
+            position: relative; cursor: pointer;
+        }
+
+        .card:hover { transform: scale(1.05); border-color: var(--primary); }
+        .card img { width: 100%; height: 320px; object-fit: cover; }
+        
+        .card-info { padding: 20px; }
+        .card-info h3 { font-size: 1rem; margin-bottom: 5px; }
+        .card-info span { color: var(--primary); font-size: 12px; font-weight: bold; }
+
+        /* Section Titles */
+        .title-reveal {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem; text-transform: uppercase;
+            margin-bottom: 50px; border-left: 6px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #050505; padding: 60px 8% 30px;
+            text-align: center; border-top: 1px solid #111;
+        }
+
+        .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; margin-bottom: 20px; }
+        .footer-links { margin-bottom: 30px; }
+        .footer-links a { color: #555; margin: 0 15px; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="showPage('home')">Anime_<span>Harsh</span>_world</div>
+        <ul>
+            <li><a href="#" onclick="showPage('home')">Home</a></li>
+            <li><a href="#" onclick="showPage('trending')">Trending</a></li>
+            <li><a href="#" onclick="showPage('library')">My Library</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="active">
+        <div class="hero">
+            <div class="hero-content" data-aos="fade-right">
+                <h1>Welcome to <span class="brand-name">Anime_Harsh_world</span></h1>
+                <p>Ek aisi jagah jahan anime ki duniya aur Harsh ki creativity milti hai. Explore karein behtareen content aur immersive experience.</p>
+                <a href="#" class="btn btn-primary" onclick="showPage('trending')">Start Watching</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="trending">
+        <div class="content-container">
+            <h2 class="title-reveal" data-aos="fade-up">Trending on <span>Harsh_World</span></h2>
+            <div class="grid">
+                <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00OGQ4LWE3OGYtNDdiMzNiNDBkZGUyXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Demon Slayer">
+                    <div class="card-info"><span>ACTION</span><h3>Demon Slayer</h3></div>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://m.media-amazon.com/images/I/71u9iB3L4kL._AC_UF1000,1000_QL80_.jpg" alt="Solo Leveling">
+                    <div class="card-info"><span>SYSTEM</span><h3>Solo Leveling</h3></div>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjVjMTY2YWEtZWE0Yy00ZmI1LTg3MWItMDNhYzU5NWZlZGY2XkEyXkFqcGdeQXVyMTA1NjE5MTAz._V1_.jpg" alt="One Piece">
+                    <div class="card-info"><span>ADVENTURE</span><h3>One Piece</h3></div>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjVjMTY2YWEtZWE0Yy00ZmI1LTg3MWItMDNhYzU5NWZlZGY2XkEyXkFqcGdeQXVyMTA1NjE5MTAz._V1_.jpg" alt="Anime">
+                    <div class="card-info"><span>MYSTERY</span><h3>Harsh Special</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="library">
+        <div class="content-container" style="text-align: center; padding-top: 150px;">
+            <h2 class="title-reveal" style="border: none;">Harsh's <span>Personal Library</span></h2>
+            <p style="color: #666; margin-top: 20px;">Coming Soon: Personal Watchlist features for Anime_Harsh_world fans.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Anime_<span>Harsh</span>_world</div>
+        <div class="footer-links">
+            <a href="#">About Harsh</a>
+            <a href="#">Contact</a>
+            <a href="#">Social Media</a>
+        </div>
+        <p style="color: #333; font-size: 12px;">&copy; 2026 Anime_Harsh_world. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: false });
+
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(s => s.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+            AOS.refresh();
+        }
+    </script>
+</body>
+</html>
